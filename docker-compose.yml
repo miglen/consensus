@@ -1,0 +1,16 @@
+services:
+  consensus:
+    build: .
+    container_name: consensus
+    ports:
+      - "3000:3000"
+    volumes:
+      - consensus_data:/app/data
+    environment:
+      - PORT=3000
+      - DB_PATH=/app/data/consensus.db
+    restart: unless-stopped
+
+volumes:
+  consensus_data:
+    driver: local
